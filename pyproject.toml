@@ -1,0 +1,42 @@
+[project]
+name = "stacktrace-mcp"
+version = "0.1.0"
+description = "MCP server that turns pasted or logged crash output (Python, Node, Java/Kotlin, Go, Rust, .NET) into a compact root-cause report, fingerprints it, and maps frames onto your code. Hand-written parsers, no dependencies beyond mcp."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "0xmortuex" }]
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=2.0.0",
+]
+keywords = ["mcp", "stack-trace", "traceback", "crash", "debugging", "fingerprint", "root-cause", "ai-agent"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Debuggers",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7", "anyio"]
+
+[project.urls]
+Homepage = "https://github.com/0xmortuex/stacktrace-mcp"
+
+[project.scripts]
+stacktrace-mcp = "stacktrace_mcp.server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/stacktrace_mcp"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
